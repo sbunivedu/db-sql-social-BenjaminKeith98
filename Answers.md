@@ -1,15 +1,22 @@
 1.) Find the names of all students who are friends with someone named Gabriel.
 ```sql
-    select h.name
-    from Highschooler
-    where 
+    select h1.name
+    from Highschooler h1
+    where ID IN (
+        select ID1
+        from Friend, Highschooler h2
+        where 
+    )
 ```
 
 2.) Find all students who do not appear in the Likes table (as a student who likes or is liked) and return their names and grades.
 ```sql
-    select
-    from 
-    where 
+    select h.name, h.grade
+    from Highschooler h
+    where h.ID NOT IN(
+        select h2.ID
+        from Likes, Highschooler h2
+        where ID1 <> h.ID AND ID2 <> h.ID);
 ```
 
 3.) (*) Find the name and grade of all students who are liked by more than one other student.
